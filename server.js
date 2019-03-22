@@ -1,3 +1,4 @@
+const cors = require('cors');
 // express
 const express = require("express");
 const server = express();
@@ -6,6 +7,7 @@ const actionRouter = require("./Routers/actionRouter.js");
 const projectRouter = require("./Routers/projectRouter.js");
 // using on server
 server.use(express.json());
+server.use(cors());
 server.use("/actions", actionRouter);
 server.use("/projects", projectRouter);
 // home route
