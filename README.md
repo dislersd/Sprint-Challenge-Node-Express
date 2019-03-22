@@ -23,17 +23,23 @@ In this challenge, create a web API around the following resources: `Projects` a
 ## Self-Study/Essay Questions
 
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
-
-- [ ] Mention two parts of Express that you learned about this week.
-
-- [ ] Describe Middleware?
-
-- [ ] Describe a Resource?
-
-- [ ] What can the API return to help clients know if a request was successful?
-
-- [ ] How can we partition our application into sub-applications?
-
+***
+- [x] Mention two parts of Express that you learned about this week.
+  - Express Router: Allows our code to be more modular. You can have a single URL per resource and execute different code based on which HTTP method is being used.
+  - Express Middleware Support for Node: Allows for easy implementation of middleware.
+***
+- [x] Describe Middleware?
+  - Middleware is a term for functions that intercept requests, do something with it (or not), and then send a response.
+***
+- [x] Describe a Resource?
+  - A resource is any target of an HTTP request. Anything you are trying to send/recieve from a server.
+***
+- [x] What can the API return to help clients know if a request was successful?
+  - A status code! (200) = success (201) = successful post
+***
+- [x] How can we partition our application into sub-applications?
+  - Using require and export we can partition our code. Express router makes it really easy to seperate our resources into seperate files and make our code modular.
+***
 ## Project Setup
 
 Follow these steps to set up and work on your project:
