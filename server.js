@@ -4,11 +4,11 @@ const server = express();
 // routes
 const actionRouter = require("./Routers/actionRouter.js");
 const projectRouter = require("./Routers/projectRouter.js");
-
+// using on server
 server.use(express.json());
 server.use("/actions", actionRouter);
 server.use("/projects", projectRouter);
-
+// home route
 server.get("/", async (req, res) => {
   try {
     res.status(200).send("Hello World");
