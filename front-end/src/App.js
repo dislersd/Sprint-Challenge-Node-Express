@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
+//  components
+import ProjectList from './components/ProjectList.js'
+import ProjectForm from "./components/ProjectForm";
 
 function App() {
   const [projects, setProjects] = useState([]);
@@ -26,16 +29,20 @@ function App() {
     <div>Loading...</div>
   ) : (
     <div className="App">
-      {projects.map(project => (
-        <div key={project.id}>
-          <p>Project: {project.name}</p>
-          <p>Description: {project.description}</p>
-          <button onClick={() => removeProject(project.id)}> x </button>
-          <hr />
-        </div>
-      ))}
+      <ProjectForm />
+      <ProjectList projects={projects} remove={removeProject}/>
     </div>
   );
 }
 
 export default App;
+
+
+// {projects.map(project => (
+//   <div key={project.id}>
+//     <p>Project: {project.name}</p>
+//     <p>Description: {project.description}</p>
+//     <button onClick={() => removeProject(project.id)}> x </button>
+//     <hr />
+//   </div>
+// ))}
