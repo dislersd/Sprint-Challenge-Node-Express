@@ -17,6 +17,17 @@ function App() {
     fetchProjects();
   }, []);
 
+  async function handleSubmit(e, projectName, projectDescription) {
+    e.preventDefault();
+    const newPost = {
+      name: projectName,
+      description: projectDescription
+    }
+    console.log(newPost)
+    await axios.post('http://localhost:3000/projects', newPost);
+    const res = await axios.get("http://localhost:3000/projects")
+    setProjects(res.data)
+    }
 
   async function removeProject(id) {
     await axios.delete(`http://localhost:3000/projects/${id}`);
@@ -29,7 +40,7 @@ function App() {
     <div>Loading...</div>
   ) : (
     <div className="App">
-      <ProjectForm />
+      <ProjectForm handleSubmit={handleSubmit}/>
       <ProjectList projects={projects} remove={removeProject}/>
     </div>
   );

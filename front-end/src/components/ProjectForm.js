@@ -1,26 +1,54 @@
 import React, { useReducer } from "react";
-import styled from 'styled-components'
-import Axios from "axios";
+import styled from "styled-components";
 
-const AddProjectForm = styled.form `
-border: 2px solid black;
-width: 400px;
-margin: 20px auto;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-padding: 10px;
+const AddProjectForm = styled.form`
+  border: 2px solid black;
+  width: 400px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
 
-input {
-  margin: 10px 0;
-  border: none;
-  border-bottom: 2px solid red;
-  font-size: 18px;
-}
-`
+  input {
+    margin: 10px 0;
+    border: none;
+    border-bottom: 2px solid red;
+    font-size: 18px;
+  }
+
+  button {
+    border: 1px solid #495267;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-family: helvetica, sans-serif;
+    padding: 10px 10px 10px 10px;
+    text-decoration: none;
+    display: inline-block;
+    text-shadow: 0px 0px 0 rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #606c88;
+    background-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(#606c88),
+      to(#3f4c6b)
+    );
+    background-image: -webkit-linear-gradient(top, #606c88, #3f4c6b);
+    background-image: -moz-linear-gradient(top, #606c88, #3f4c6b);
+    background-image: -ms-linear-gradient(top, #606c88, #3f4c6b);
+    background-image: -o-linear-gradient(top, #606c88, #3f4c6b);
+    background-image: linear-gradient(to bottom, #606c88, #3f4c6b);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#606c88, endColorstr=#3f4c6b);
+  }
+`;
 
 // using arrow function - using mixed variety of function defs just to get practice -
-const ProjectForm = () => {
+const ProjectForm = props => {
   // const [projectName, setProjectName] = useState("");
   // const [projectDescription, setProjectDescription] = useState("");
 
@@ -32,7 +60,6 @@ const ProjectForm = () => {
     }
   );
 
-
   const handleChange = event => {
     const { name, value } = event.target;
     setUserInput({ [name]: value });
@@ -40,20 +67,12 @@ const ProjectForm = () => {
     // setProjectDescription(userInput.projectDescription);
   };
 
-  // async function handleSubmit(e) {
-  // e.preventDefault();
-  // await axios.post('http://localhost:3000/projects', )
-
-    
-  // }
-
   return (
     <div>
-      <AddProjectForm 
-      //onSubmit={handleSubmit}
-      autoComplete="off"
+      <AddProjectForm
+        onSubmit={e => props.handleSubmit(e, `${userInput.projectName}`, `${userInput.projectDescription}` )}
+        autoComplete="off"
       >
-        <label> Project Name: </label>
         <input
           type="text"
           name="projectName"
@@ -61,7 +80,6 @@ const ProjectForm = () => {
           placeholder="Project Name..."
           onChange={handleChange}
         />
-        <label> Project Description: </label>
         <input
           type="text"
           name="projectDescription"
@@ -69,9 +87,11 @@ const ProjectForm = () => {
           placeholder="Project Description..."
           onChange={handleChange}
         />
-        <button type="submit" value="add"> Add </button>
+        <button type="submit" value="add">
+          {" "}
+          Add{" "}
+        </button>
       </AddProjectForm>
-
     </div>
   );
 };
