@@ -2,19 +2,56 @@ import React, { useReducer } from "react";
 import styled from "styled-components";
 
 const AddProjectForm = styled.form`
-  border: 2px solid black;
-  width: 400px;
+  width: 90%;
+  max-width: 600px;
   margin: 20px auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 10px;
+  align-items: center;
+  padding: 30px;
+  background-color: #f8f8f8;
+  border-radius: 10px;
 
-  input {
-    margin: 10px 0;
-    border: none;
-    border-bottom: 2px solid red;
-    font-size: 18px;
+  input[type="text"] {
+    background-color: transparent;
+    border: 0;
+    border-bottom: solid 1px #0c1416;
+    width: 70%;
+    padding-bottom: 4px;
+    color: #99999;
+    font-weight: lighter;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    font-size: 20px;
+  }
+
+  input[type="text"] {
+    outline: none;
+  }
+
+  input:-webkit-autofill {
+    box-shadow: 0 0 0 30px #2c3e50 inset;
+    -webkit-text-fill-color: #fff;
+  }
+
+  button {
+    border: 0;
+    padding: 8px 10%;
+    margin: 0 10px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    background-color: #51f1c1;
+    color: rgb(27, 23, 20);
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  button:active {
+    outline: none;
   }
 
   button {
@@ -44,10 +81,14 @@ const AddProjectForm = styled.form`
     background-image: -o-linear-gradient(top, #606c88, #3f4c6b);
     background-image: linear-gradient(to bottom, #606c88, #3f4c6b);
     filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#606c88, endColorstr=#3f4c6b);
+    transition: all 0.5s ease;
+  
+      &:hover {
+        background-color: red;
+      }
   }
 `;
 
-// using arrow function - using mixed variety of function defs just to get practice -
 const ProjectForm = props => {
   // const [projectName, setProjectName] = useState("");
   // const [projectDescription, setProjectDescription] = useState("");
@@ -70,7 +111,13 @@ const ProjectForm = props => {
   return (
     <div>
       <AddProjectForm
-        onSubmit={e => props.handleSubmit(e, `${userInput.projectName}`, `${userInput.projectDescription}` )}
+        onSubmit={e =>
+          props.handleSubmit(
+            e,
+            `${userInput.projectName}`,
+            `${userInput.projectDescription}`
+          )
+        }
         autoComplete="off"
       >
         <input

@@ -2,8 +2,8 @@ import React from "react";
 import styled from 'styled-components';
 //css
 const ProjectsWrapper = styled.div `
-border: 2px solid black;
-width: 400px;
+width: 90%;
+max-width: 600px;
 margin: 20px auto;
 display: flex;
 flex-direction: column;
@@ -11,6 +11,8 @@ align-items: flex-start;
 justify-content: flex-start;
 padding: 10px;
 height: 100vh;
+background-color: #f8f8f8;
+border-radius: 50px;
 `
 
 const Project = styled.div `
